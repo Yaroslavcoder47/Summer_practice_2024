@@ -1,0 +1,27 @@
+{
+  "obj1": null,
+  "user": {
+    "id": 12345,
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "address": null,
+    "phoneNumbers": [
+      {
+        "type": "home",
+        "number": "555-555-5555"
+      },
+      {
+        "type": "work",
+        "number": "555-555-5556"
+      }
+    ]
+  },
+  "obj2": null,
+  "order": {
+    "orderId": 98765,
+    "date": "2024-06-26",
+    "items": null,
+    "shipping": 47,
+    "info" :  null
+  }
+}
