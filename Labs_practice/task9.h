@@ -6,6 +6,6 @@
 void CheckInputPathForTask9(const std::filesystem::path& path_to_filesystem_object);
 std::filesystem::path GetPathToMove(const std::filesystem::path& path_to_file);
 void Move(const std::filesystem::path& path_to_file);
-
+int mainTask9(int argc, char* argv[]);
 
 #endif // !TASK9_H

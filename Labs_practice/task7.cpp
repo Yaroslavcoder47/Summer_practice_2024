@@ -22,26 +22,26 @@ void FileStorage::CopyFile(const std::filesystem::path& path_to_file)
     }
 }
 
-//int main(int argc, char* argv[])
-//{
-//    try {
-//        CheckArgumentsAmountForTask6(argc);
-//        std::filesystem::path inputPath = argv[argc - 2];
-//        std::filesystem::path outputPath = argv[argc - 1];
-//        CheckInputPathForTask5(inputPath);
-//        CheckInputPathForTask5(outputPath);
-//        FileStorage storage(outputPath);
-//        storage.InitStorage();
-//
-//        for (const auto& it : std::filesystem::directory_iterator(inputPath)) {
-//            if (std::filesystem::is_regular_file(it.path())) {
-//                storage.CopyFile(it.path());
-//            }
-//
-//        }
-//    }
-//    catch (std::exception& ex) {
-//        std::cout << ex.what();
-//    }
-//    return 0;
-//}
+int mainTask7(int argc, char* argv[])
+{
+    try {
+        CheckArgumentsAmountForTask6(argc);
+        std::filesystem::path inputPath = argv[argc - 3];
+        std::filesystem::path outputPath = argv[argc - 2];
+        CheckInputPathForTask5(inputPath);
+        CheckInputPathForTask5(outputPath);
+        FileStorage storage(outputPath);
+        storage.InitStorage();
+
+        for (const auto& it : std::filesystem::directory_iterator(inputPath)) {
+            if (std::filesystem::is_regular_file(it.path())) {
+                storage.CopyFile(it.path());
+            }
+
+        }
+    }
+    catch (std::exception& ex) {
+        std::cout << ex.what();
+    }
+    return 0;
+}

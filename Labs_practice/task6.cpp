@@ -2,11 +2,11 @@
 
 void CheckArgumentsAmountForTask6(int arguments_amount)
 {
-    if (arguments_amount != 3)
+    if (arguments_amount != 4)
     {
         std::string message = "Invalid command line arguments amount : current – ";
         message += std::to_string(arguments_amount);
-        message += ", required – 3!";
+        message += ", required – 4!";
         throw std::invalid_argument(message);
     }
 }
@@ -43,29 +43,29 @@ std::set<std::string> GetFilesContentFromDirectory(const std::filesystem::path& 
     return resultSet;
 }
 
-//int main(int argc, char* argv[])
-//{
-//    try {
-//        CheckArgumentsAmountForTask6(argc);
-//        std::filesystem::path inputPath = argv[argc - 2];
-//        std::filesystem::path outputPath = argv[argc - 1];
-//        CheckInputPathForTask5(inputPath);
-//        CheckInputPathForTask5(outputPath);
-//        std::set<std::string> destinationDirectory = GetFilesContentFromDirectory(outputPath);
-//
-//        for (const auto& entry : std::filesystem::directory_iterator(inputPath)) {
-//
-//            const auto path_in_dir_out = outputPath / entry.path().filename();
-//            std::string content = ReadFileContentForTask6(entry.path());
-//            if (destinationDirectory.find(content) == destinationDirectory.end()) {
-//                std::filesystem::copy_file(entry.path(), path_in_dir_out, std::filesystem::copy_options::overwrite_existing);
-//                std::cout << "File " << entry.path().filename().string() << " is in " << path_in_dir_out.string() << std::endl;
-//                destinationDirectory.insert(content);
-//            }
-//        }
-//    }
-//    catch (std::exception& ex) {
-//        std::cout << ex.what();
-//    }
-//    return 0;
-//}
+int mainTask6(int argc, char* argv[])
+{
+    try {
+        CheckArgumentsAmountForTask6(argc);
+        std::filesystem::path inputPath = argv[argc - 3];
+        std::filesystem::path outputPath = argv[argc - 2];
+        CheckInputPathForTask5(inputPath);
+        CheckInputPathForTask5(outputPath);
+        std::set<std::string> destinationDirectory = GetFilesContentFromDirectory(outputPath);
+
+        for (const auto& entry : std::filesystem::directory_iterator(inputPath)) {
+
+            const auto path_in_dir_out = outputPath / entry.path().filename();
+            std::string content = ReadFileContentForTask6(entry.path());
+            if (destinationDirectory.find(content) == destinationDirectory.end()) {
+                std::filesystem::copy_file(entry.path(), path_in_dir_out, std::filesystem::copy_options::overwrite_existing);
+                std::cout << "File " << entry.path().filename().string() << " is in " << path_in_dir_out.string() << std::endl;
+                destinationDirectory.insert(content);
+            }
+        }
+    }
+    catch (std::exception& ex) {
+        std::cout << ex.what();
+    }
+    return 0;
+}

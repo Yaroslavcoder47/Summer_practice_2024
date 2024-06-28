@@ -74,18 +74,18 @@ directory_content::Info directory_content::GetInfo(const std::filesystem::path& 
     return resultObj;
 }
 
-//int main(int argc, char* argv[])
-//{
-//    try {
-//        CheckArgumentsAmount(argc);
-//        CheckInputPathForTask5(std::filesystem::path(argv[argc - 1]));
-//        std::cout << directory_content::GetInfo(argv[1]) << '\n' << '\n' << '\n';
-//        for (const auto& itObj : std::filesystem::directory_iterator(argv[1])) {
-//            std::cout << filesystem_object::GetInfo(itObj) << '\n';
-//        }
-//    }
-//    catch (std::exception& ex) {
-//        std::cout << ex.what();
-//    }
-//    return 0;
-//}
+int mainTask5(int argc, char* argv[])
+{
+    try {
+        CheckArgumentsAmount(argc);
+        CheckInputPathForTask5(std::filesystem::path(argv[argc - 2]));
+        std::cout << directory_content::GetInfo(argv[argc - 2]) << '\n' << '\n' << '\n';
+        for (const auto& itObj : std::filesystem::directory_iterator(argv[argc - 2])) {
+            std::cout << filesystem_object::GetInfo(itObj) << '\n';
+        }
+    }
+    catch (std::exception& ex) {
+        std::cout << ex.what();
+    }
+    return 0;
+}

@@ -3,7 +3,7 @@
 void CheckInputPathForTask4(const std::filesystem::path& path_to_filesystem_object)
 {
     if (!std::filesystem::exists(path_to_filesystem_object)) {
-        throw std::invalid_argument("Filesystem object by path" + path_to_filesystem_object.string() + " is not exists!");
+        throw std::invalid_argument("Filesystem object by path " + path_to_filesystem_object.string() + " is not exists!");
     }
     if (!std::filesystem::is_regular_file(path_to_filesystem_object) && !std::filesystem::is_directory(path_to_filesystem_object)) {
         throw std::invalid_argument("Filesystem object by path " + path_to_filesystem_object.string() + " is not a regular file or directory!");
@@ -101,17 +101,17 @@ void WriteToFileForTask4(nlohmann::json& json_object, std::filesystem::path file
     output.close();
 }
 
-//int main(int argc, char* argv[])
-//{
-//    try {
-//        CheckArgumentsAmount(argc);
-//        CheckInputPathForTask4(std::filesystem::path(argv[argc - 1]));
-//        nlohmann::json resultObject = GetFsObjectInfo(argv[1]);
-//        std::cout << resultObject.dump(4);
-//        WriteToFileForTask4(resultObject, std::filesystem::path(argv[argc - 1]));
-//    }
-//    catch (std::exception& ex) {
-//        std::cout << ex.what();
-//    }
-//    return 0;
-//}
+int mainTask4(int argc, char* argv[])
+{
+    try {
+        CheckArgumentsAmount(argc);
+        CheckInputPathForTask4(std::filesystem::path(argv[argc - 2]));
+        nlohmann::json resultObject = GetFsObjectInfo(argv[argc - 2]);
+        std::cout << resultObject.dump(4);
+        WriteToFileForTask4(resultObject, std::filesystem::path(argv[argc - 2]));
+    }
+    catch (std::exception& ex) {
+        std::cout << ex.what();
+    }
+    return 0;
+}

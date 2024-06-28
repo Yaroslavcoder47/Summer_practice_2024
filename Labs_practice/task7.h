@@ -4,6 +4,8 @@
 #include <set>
 #include "task6.h"
 
+int mainTask7(int argc, char* argv[]);
+
 class FileStorage {
 public:
     FileStorage(const std::filesystem::path& path_to_directory) : path_to_directory_(path_to_directory) {};

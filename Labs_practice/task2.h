@@ -5,5 +5,6 @@
 
 void ModifyJsonObject(nlohmann::json& json_object);
 void WriteToFile(nlohmann::json& json_object, std::filesystem::path file_path);
+int mainTask2(int argc, char* argv[]);
 
 #endif // !TASK2_H

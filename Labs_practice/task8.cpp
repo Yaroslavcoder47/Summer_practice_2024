@@ -45,17 +45,17 @@ void RemoveDuplicatesFromDirectory(const std::filesystem::path& path_to_director
     }
 }
 
-//int main(int argc, char* argv[])
-//{
-//    try {
-//        CheckArgumentsAmount(argc);
-//        std::filesystem::path inputPath = argv[1];
-//        CheckInputPathForTask5(inputPath);
-//        RemoveDuplicatesFromDirectory(inputPath);
-//
-//    }
-//    catch (std::exception& ex) {
-//        std::cout << ex.what();
-//    }
-//    return 0;
-//}
+int mainTask8(int argc, char* argv[])
+{
+    try {
+        CheckArgumentsAmount(argc);
+        std::filesystem::path inputPath = argv[argc-2];
+        CheckInputPathForTask5(inputPath);
+        RemoveDuplicatesFromDirectory(inputPath);
+
+    }
+    catch (std::exception& ex) {
+        std::cout << ex.what();
+    }
+    return 0;
+}

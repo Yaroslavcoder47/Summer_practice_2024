@@ -43,20 +43,20 @@ void WriteToFile(nlohmann::json& json_object, std::filesystem::path file_path)
 	}
 }
 
-//int mainTask2(int argc, char* argv[])
-//{
-//	try {
-//		CheckArgumentsAmount(argc);
-//		CheckInputPath(std::filesystem::path(argv[argc - 1]));
-//		std::ifstream inputFile(argv[argc - 1]);
-//		nlohmann::json inputData = nlohmann::json::parse(inputFile);
-//
-//		ModifyJsonObject(inputData);
-//		WriteToFile(inputData, argv[1]);
-//	}
-//	catch (std::exception& ex) {
-//		std::cerr << ex.what();
-//	}
-//
-//	return 0;
-//}
+int mainTask2(int argc, char* argv[])
+{
+	try {
+		CheckArgumentsAmount(argc);
+		CheckInputPath(std::filesystem::path(argv[argc - 2]));
+		std::ifstream inputFile(argv[argc - 2]);
+		nlohmann::json inputData = nlohmann::json::parse(inputFile);
+
+		ModifyJsonObject(inputData);
+		WriteToFile(inputData, argv[argc-2]);
+	}
+	catch (std::exception& ex) {
+		std::cerr << ex.what();
+	}
+
+	return 0;
+}

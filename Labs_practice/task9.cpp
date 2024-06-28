@@ -3,7 +3,7 @@
 void CheckInputPathForTask9(const std::filesystem::path& path_to_filesystem_object)
 {
     if (!std::filesystem::exists(path_to_filesystem_object)) {
-        throw std::invalid_argument("Filesystem object by path" + path_to_filesystem_object.string() + " is not exists!");
+        throw std::invalid_argument("Filesystem object by path " + path_to_filesystem_object.string() + " is not exists!");
     }
     if (!std::filesystem::is_directory(path_to_filesystem_object)) {
         throw std::invalid_argument("Filesystem object by path " + path_to_filesystem_object.string() + " is not a directory!");
@@ -39,25 +39,25 @@ void Move(const std::filesystem::path& path_to_file)
     std::filesystem::path newPath = GetPathToMove(path_to_file);
     std::filesystem::create_directories(newPath.parent_path());
     std::filesystem::rename(path_to_file, newPath);
-    std::cout << "File by path " + path_to_file.string() + " has been moved to" + newPath.string() + "!";
+    std::cout << "File by path " + path_to_file.string() + " has been moved to " + newPath.string() + "!" << '\n';
 }
 
 
-//int main(int argc, char* argv[])
-//{
-//    try {
-//        CheckArgumentsAmount(argc);
-//        std::filesystem::path inputPath = argv[1];
-//        CheckInputPathForTask9(inputPath);
-//        for (const auto& it : std::filesystem::directory_iterator(inputPath)) {
-//            if (std::filesystem::is_regular_file(it)) {
-//                Move(it);
-//            }
-//        }
-//
-//    }
-//    catch (std::exception& ex) {
-//        std::cout << ex.what();
-//    }
-//    return 0;
-//}
+int mainTask9(int argc, char* argv[])
+{
+    try {
+        CheckArgumentsAmount(argc);
+        std::filesystem::path inputPath = argv[argc-2];
+        CheckInputPathForTask9(inputPath);
+        for (const auto& it : std::filesystem::directory_iterator(inputPath)) {
+            if (std::filesystem::is_regular_file(it)) {
+                Move(it);
+            }
+        }
+
+    }
+    catch (std::exception& ex) {
+        std::cout << ex.what();
+    }
+    return 0;
+}

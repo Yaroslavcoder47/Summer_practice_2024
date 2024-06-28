@@ -19,6 +19,7 @@ public:
 
 std::filesystem::path GetPathToMoveForTask10(const std::filesystem::path& path_to_file);
 void MoveForTask10(const std::filesystem::path& path_to_file);
+int mainTask10(int argc, char* argv[]);
 
 #endif // !TASK10_H
 

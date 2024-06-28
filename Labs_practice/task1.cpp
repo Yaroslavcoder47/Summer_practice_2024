@@ -2,11 +2,11 @@
 
 void CheckArgumentsAmount(int arguments_amount)
 {
-    if (arguments_amount != 2)
+    if (arguments_amount != 3)
     {
         std::string message = "Invalid command line arguments amount : current – ";
         message += std::to_string(arguments_amount);
-        message += ", required – 2!";
+        message += ", required – 3!";
         throw std::invalid_argument(message);
     }
 }
@@ -14,7 +14,7 @@ void CheckArgumentsAmount(int arguments_amount)
 void CheckInputPath(const std::filesystem::path& path_to_filesystem_object)
 {
     if (!std::filesystem::exists(path_to_filesystem_object)) {
-        throw std::invalid_argument("Filesystem object by path" + path_to_filesystem_object.string() + " is not exists!");
+        throw std::invalid_argument("Filesystem object by path " + path_to_filesystem_object.string() + " is not exists!");
     }
     if (!std::filesystem::is_regular_file(path_to_filesystem_object)) {
         throw std::invalid_argument("Filesystem object by path " + path_to_filesystem_object.string() + " is not a regular file!");
@@ -58,36 +58,35 @@ bool IsJsonCorrect(const nlohmann::json& json, const nlohmann::json& template_js
 }
 
 
-//int mainTask1(int argc, char* argv[])
-//{
-//    try {
-//        nlohmann::json template_json = R"({
-//        "string_0" : "some string",
-//        "number" : 10,
-//        "object" : {
-//            "boolean" : true,
-//            "array" : []
-//        },
-//        "string_1" : null,
-//        "array" : null
-//        })"_json;
-//
-//        CheckArgumentsAmount(argc);
-//        CheckInputPath(std::filesystem::path(argv[argc - 1]));
-//        std::ifstream inputFile(argv[argc - 1]);
-//
-//        nlohmann::json inputData = nlohmann::json::parse(inputFile);
-//        //std::cout << inputData.dump(4) << "\n";
-//        std::cout << IsJsonCorrect(inputData, template_json);
-//        if (IsJsonCorrect(inputData, template_json)) {
-//            std::cout << ("Structure of JSON - file by path is correct.");
-//        }
-//        else {
-//            std::cout << ("Structure of JSON - file by path is incorrect.");
-//        }
-//    }
-//    catch (std::exception& ex) {
-//        std::cerr << ex.what();
-//    }
-//    return 0;
-//}
+int mainTask1(int argc, char* argv[])
+{
+    try {
+        nlohmann::json template_json = R"({
+        "string_0" : "some string",
+        "number" : 10,
+        "object" : {
+            "boolean" : true,
+            "array" : []
+        },
+        "string_1" : null,
+        "array" : null
+        })"_json;
+
+        CheckArgumentsAmount(argc);
+        CheckInputPath(std::filesystem::path(argv[argc - 2]));
+        std::ifstream inputFile(argv[argc - 2]);
+
+        nlohmann::json inputData = nlohmann::json::parse(inputFile);
+        
+        if (IsJsonCorrect(inputData, template_json)) {
+            std::cout << ("Structure of JSON - file by path is correct.");
+        }
+        else {
+            std::cout << ("Structure of JSON - file by path is incorrect.");
+        }
+    }
+    catch (std::exception& ex) {
+        std::cerr << ex.what();
+    }
+    return 0;
+}

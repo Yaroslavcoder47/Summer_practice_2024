@@ -31,17 +31,17 @@ void WriteToJsonFile(nlohmann::json& json_object, std::filesystem::path file_pat
     out << json_object.dump(4);
 }
 
-//int main(int argc, char* argv[])
-//{
-//    try {
-//        CheckArgumentsAmount(argc);
-//        CheckInputPath(std::filesystem::path(argv[argc - 1]));
-//        nlohmann::json timeObject = TmToJson(GetRequiredDateTime());
-//        WriteToConsole(timeObject);
-//        WriteToJsonFile(timeObject, argv[argc - 1]);
-//    }
-//    catch (std::exception& ex) {
-//        std::cout << ex.what();
-//    }
-//    return 0;
-//}
+int mainTask3(int argc, char* argv[])
+{
+    try {
+        CheckArgumentsAmount(argc);
+        CheckInputPath(std::filesystem::path(argv[argc - 2]));
+        nlohmann::json timeObject = TmToJson(GetRequiredDateTime());
+        WriteToConsole(timeObject);
+        WriteToJsonFile(timeObject, argv[argc - 2]);
+    }
+    catch (std::exception& ex) {
+        std::cout << ex.what();
+    }
+    return 0;
+}

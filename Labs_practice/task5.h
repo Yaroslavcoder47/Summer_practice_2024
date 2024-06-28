@@ -4,6 +4,7 @@
 #include "task1.h"
 
 void CheckInputPathForTask5(const std::filesystem::path& path_to_filesystem_object);
+int mainTask5(int argc, char* argv[]);
 
 namespace filesystem_object {
     struct Info {
